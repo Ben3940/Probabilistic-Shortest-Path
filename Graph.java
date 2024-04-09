@@ -1,6 +1,12 @@
 public class Graph {
     int[][] adjacency_matrix;
+    boolean directed;
+
     public Graph(int n){
+        this(n, false);
+    }
+
+    public Graph(int n, boolean directed){
         adjacency_matrix = new int[n][n];
         for (int i = 0; i < n; i++){
             for (int j = 0; j < n; j++){
@@ -9,7 +15,9 @@ public class Graph {
         }
     }
 
-    public void add_edge(int from_vertex, int to_vertex){
+    public void add_edge()
+
+    public void add_edge_undirected(int from_vertex, int to_vertex){
         adjacency_matrix[from_vertex][to_vertex] = 1;
     }
 }
