@@ -1,6 +1,17 @@
 
 public class Graph<T> {
-    int[][] adjacency_matrix;
+    int[][] adjacency_matrix = {
+        {0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+        {1, 0, 0, 0, 1, 0, 1, 0, 0, 0},
+        {1, 0, 0, 0, 1, 1, 0, 0, 0, 0},
+        {1, 0, 0, 0, 0, 1, 0, 0, 1, 0},
+        {0, 1, 1, 0, 0, 0, 0, 1, 0, 0},
+        {0, 0, 1, 1, 0, 0, 0, 1, 1, 0},
+        {0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
+        {0, 0, 0, 0, 1, 1, 0, 0, 1, 1},
+        {0, 0, 0, 1, 0, 1, 0, 1, 0, 1},
+        {0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
+    };
     boolean directed;
 
     public Graph(int n){
@@ -23,6 +34,7 @@ public class Graph<T> {
         }
     }
 
+    // Prints adjacency matrix of Graph class
     public void print_adjacency_matrix(){
         System.out.print("    ");
         for (int i = 0; i < this.adjacency_matrix.length; i++){
