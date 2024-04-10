@@ -1,4 +1,5 @@
-public class Graph {
+
+public class Graph<T> {
     int[][] adjacency_matrix;
     boolean directed;
 
@@ -15,7 +16,9 @@ public class Graph {
         }
     }
 
-    public void add_edge()
+    public void add_edge(Vertex<T> to_vertex, Vertex<T> from_vertex){
+        
+    }
 
     public void add_edge_undirected(int from_vertex, int to_vertex){
         adjacency_matrix[from_vertex][to_vertex] = 1;
