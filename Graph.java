@@ -16,11 +16,25 @@ public class Graph<T> {
         }
     }
 
-    public void add_edge(Vertex<T> to_vertex, Vertex<T> from_vertex){
-        
+    public void add_edge(int to_vertex, int from_vertex){
+        this.adjacency_matrix[to_vertex][from_vertex] = 1;
+        if (!this.directed){
+            this.adjacency_matrix[from_vertex][to_vertex] = 1;
+        }
     }
 
-    public void add_edge_undirected(int from_vertex, int to_vertex){
-        adjacency_matrix[from_vertex][to_vertex] = 1;
+    public void print_adjacency_matrix(){
+        System.out.print("    ");
+        for (int i = 0; i < this.adjacency_matrix.length; i++){
+            System.out.print(i + " ");
+        }
+        System.out.println("\n");
+        for (int i = 0; i < this.adjacency_matrix.length; i++){
+            System.out.print(i + "   ");
+            for (int j = 0; j < this.adjacency_matrix[0].length; j++){
+                System.out.print(this.adjacency_matrix[i][j] + " ");
+            }
+            System.out.println("");
+        }
     }
 }
