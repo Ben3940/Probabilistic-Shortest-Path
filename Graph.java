@@ -14,17 +14,8 @@ public class Graph<T> {
     };
     boolean directed;
 
-    public Graph(int n){
-        this(n, false);
-    }
-
-    public Graph(int n, boolean directed){
-        adjacency_matrix = new int[n][n];
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
-                adjacency_matrix[i][j] = 0;
-            }
-        }
+    public Graph(boolean directed){
+        this.directed = directed;
     }
 
     public void add_edge(int to_vertex, int from_vertex){
