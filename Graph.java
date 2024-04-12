@@ -14,9 +14,20 @@ public class Graph {
         {0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
     };
     boolean directed;
+    int start, end;
 
     public Graph(boolean directed){
         this.directed = directed;
+        this.start = 0;
+        this.end = 9;
+    }
+
+    public int get_start(){
+        return this.start;
+    }
+
+    public int get_end(){
+        return this.end;
     }
 
     public int[][] get_adjacency_matrix(){
