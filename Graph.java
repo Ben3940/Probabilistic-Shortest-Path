@@ -37,7 +37,7 @@ public class Graph {
     public ArrayList<Integer> get_adjacent_vertices(int vertex_idx){
         ArrayList<Integer> adjacent = new ArrayList<>();
 
-        for(int i =0; i < 9; i++){
+        for(int i =0; i <= 9; i++){
             if(this.adjacency_matrix[vertex_idx][i] == 1){
                 adjacent.add(i);
             }
