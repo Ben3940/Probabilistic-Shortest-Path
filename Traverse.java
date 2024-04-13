@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Queue;
 import java.util.LinkedList;
 
-public class BFS {
+public class Traverse {
     Graph graph;
     Map<Integer, Integer> paths_map = new HashMap<>();
     Set<Integer> visited = new HashSet<Integer>();
@@ -15,7 +15,7 @@ public class BFS {
 
 
     // Constructor: BFS adds root vertex of graph to queue
-    public BFS(Graph graph){
+    public Traverse(Graph graph){
         this.graph = graph;
         this.queue.add(graph.get_start());
         this.paths_map.put(graph.get_start(), -1);

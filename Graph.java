@@ -50,7 +50,7 @@ public class Graph {
         ArrayList<Integer> adjacent = new ArrayList<>();
 
         for(int i =0; i <= 9; i++){
-            if(this.adjacency_matrix[vertex_idx][i] == 1){
+            if(this.adjacency_matrix[vertex_idx][i] > 0){
                 adjacent.add(i);
             }
         }
