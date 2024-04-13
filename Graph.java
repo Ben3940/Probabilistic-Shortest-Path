@@ -1,5 +1,6 @@
+import java.util.ArrayList;
 
-public class Graph<T> {
+public class Graph {
     int[][] adjacency_matrix = {
         {0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
         {1, 0, 0, 0, 1, 0, 1, 0, 0, 0},
@@ -13,18 +14,35 @@ public class Graph<T> {
         {0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
     };
     boolean directed;
+    int start, end;
 
-    public Graph(int n){
-        this(n, false);
+    public Graph(boolean directed){
+        this.directed = directed;
+        this.start = 0;
+        this.end = 9;
     }
 
-    public Graph(int n, boolean directed){
-        adjacency_matrix = new int[n][n];
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
-                adjacency_matrix[i][j] = 0;
+    public int get_start(){
+        return this.start;
+    }
+
+    public int get_end(){
+        return this.end;
+    }
+
+    public int[][] get_adjacency_matrix(){
+        return this.adjacency_matrix;
+    }
+
+    public ArrayList<Integer> get_adjacent_vertices(int vertex_idx){
+        ArrayList<Integer> adjacent = new ArrayList<>();
+
+        for(int i =0; i <= 9; i++){
+            if(this.adjacency_matrix[vertex_idx][i] == 1){
+                adjacent.add(i);
             }
         }
+        return adjacent;
     }
 
     public void add_edge(int to_vertex, int from_vertex){

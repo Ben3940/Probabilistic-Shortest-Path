@@ -1,14 +1,15 @@
 
 public class Main{
     public static void main(String[] args){
-        Graph<Integer> graph = new Graph<Integer>(5);
-
-        graph.add_edge(0, 0);
-        graph.add_edge(2, 3);
-        graph.add_edge(4, 1);
-        graph.add_edge(3, 4);
+        Graph graph = new Graph(false);
 
         graph.print_adjacency_matrix();
+
+        BFS bfs = new BFS(graph);
+
+        bfs.traverse();
+        bfs.print_parent_map();
+        System.out.println("Path: " + bfs.get_path());
 
     }
 }
