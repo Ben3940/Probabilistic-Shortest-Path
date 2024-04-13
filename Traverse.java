@@ -22,7 +22,7 @@ public class Traverse {
         this.visited.add(graph.get_start());
     }
 
-    public void traverse(){
+    public void bfs_traverse(){
         while (!this.queue.isEmpty()){
             // Get next vertex to visit
             int parent_idx = this.queue.poll();

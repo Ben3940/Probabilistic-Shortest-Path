@@ -5,11 +5,11 @@ public class Main{
 
         graph.print_adjacency_matrix();
 
-        BFS bfs = new BFS(graph);
+        Traverse trav = new Traverse(graph);
 
-        bfs.traverse();
-        bfs.print_parent_map();
-        System.out.println("Path: " + bfs.get_path());
+        trav.bfs_traverse();
+        trav.print_parent_map();
+        System.out.println("Path: " + trav.get_path());
 
     }
 }
