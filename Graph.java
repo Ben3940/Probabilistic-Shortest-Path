@@ -1,17 +1,29 @@
 import java.util.ArrayList;
 
 public class Graph {
-    int[][] adjacency_matrix = {
+    // int[][] adjacency_matrix = {
+    //     {0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+    //     {1, 0, 0, 0, 1, 0, 1, 0, 0, 0},
+    //     {1, 0, 0, 0, 1, 1, 0, 0, 0, 0},
+    //     {1, 0, 0, 0, 0, 1, 0, 0, 1, 0},
+    //     {0, 1, 1, 0, 0, 0, 0, 1, 0, 0},
+    //     {0, 0, 1, 1, 0, 0, 0, 1, 1, 0},
+    //     {0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
+    //     {0, 0, 0, 0, 1, 1, 0, 0, 1, 1},
+    //     {0, 0, 0, 1, 0, 1, 0, 1, 0, 1},
+    //     {0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
+    // };
+    double[][] adjacency_matrix = {
         {0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
-        {1, 0, 0, 0, 1, 0, 1, 0, 0, 0},
+        {1, 0, 0, 0, 0.7, 0, 1, 0, 0, 0},
         {1, 0, 0, 0, 1, 1, 0, 0, 0, 0},
-        {1, 0, 0, 0, 0, 1, 0, 0, 1, 0},
-        {0, 1, 1, 0, 0, 0, 0, 1, 0, 0},
-        {0, 0, 1, 1, 0, 0, 0, 1, 1, 0},
+        {1, 0, 0, 0, 0, 0.7, 0, 0, 0.5, 0},
+        {0, 0.7, 1, 0, 0, 0, 0, 0.3, 0, 0},
+        {0, 0, 1, 0.7, 0, 0, 0, 0.1, 1, 0},
         {0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-        {0, 0, 0, 0, 1, 1, 0, 0, 1, 1},
-        {0, 0, 0, 1, 0, 1, 0, 1, 0, 1},
-        {0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
+        {0, 0, 0, 0, 0.3, 0.1, 0, 0, 0.2, 0.8},
+        {0, 0, 0, 0.5, 0, 1, 0, 0.2, 0, 0.1},
+        {0, 0, 0, 0, 0, 0, 1, 0.8, 0.1, 0},
     };
     boolean directed;
     int start, end;
@@ -30,7 +42,7 @@ public class Graph {
         return this.end;
     }
 
-    public int[][] get_adjacency_matrix(){
+    public double[][] get_adjacency_matrix(){
         return this.adjacency_matrix;
     }
 
@@ -38,11 +50,15 @@ public class Graph {
         ArrayList<Integer> adjacent = new ArrayList<>();
 
         for(int i =0; i <= 9; i++){
-            if(this.adjacency_matrix[vertex_idx][i] == 1){
+            if(this.adjacency_matrix[vertex_idx][i] > 0){
                 adjacent.add(i);
             }
         }
         return adjacent;
+    }
+
+    public double get_edge(int from_vertex, int to_vertex){
+        return this.adjacency_matrix[from_vertex][to_vertex];
     }
 
     public void add_edge(int to_vertex, int from_vertex){
