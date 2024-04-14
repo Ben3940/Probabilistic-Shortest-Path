@@ -57,6 +57,10 @@ public class Graph {
         return adjacent;
     }
 
+    public double get_edge(int from_vertex, int to_vertex){
+        return this.adjacency_matrix[from_vertex][to_vertex];
+    }
+
     public void add_edge(int to_vertex, int from_vertex){
         this.adjacency_matrix[to_vertex][from_vertex] = 1;
         if (!this.directed){
