@@ -1,0 +1,89 @@
+# A run showing an optimal result on the probabilistic algorithm:
+
+BFS - deterministic solution
+An optimal solution: 
+[0, 1, 6, 9]
+Total hops = 3
+
+DFS - probabilistic solution
+On vertex: 0
+Going on edge (0,3) edge prob = 100.0% 
+On vertex: 3
+Going on edge (3,8) edge prob = 50.0% r = 39.0
+On vertex: 8
+Going on edge (8,9) edge prob = 10.0% r = 7.0
+On vertex: 9
+Total DFS hops = 3
+Total DFS misses = 0
+Path = [0, 3, 8, 9]
+
+
+
+
+# A run showing a fair result on the probabilistic algorithm:
+
+BFS - deterministic solution
+An optimal solution: 
+[0, 1, 6, 9]
+Total hops = 3
+
+DFS - probabilistic solution
+On vertex: 0
+Going on edge (0,3) edge prob = 100.0% 
+On vertex: 3
+Cannot go on edge (3,8) edge prob = 50.0% r = 69.0
+Cannot go on edge (3,5) edge prob = 70.0% r = 91.0
+Going back to vertex: 0
+Going on edge (0,2) edge prob = 100.0% 
+On vertex: 2
+Going on edge (2,5) edge prob = 100.0% 
+On vertex: 5
+Going on edge (5,8) edge prob = 100.0% 
+On vertex: 8
+Going on edge (8,9) edge prob = 10.0% r = 10.0
+On vertex: 9
+Total DFS hops = 8
+Total DFS misses = 2
+Path = [0, 3, 0, 2, 5, 8, 9]
+
+
+
+# A run showing a poor result on the probabilistic algorithm:
+
+BFS - deterministic solution
+An optimal solution: 
+[0, 1, 6, 9]
+Total hops = 3
+
+DFS - probabilistic solution
+On vertex: 0
+Going on edge (0,3) edge prob = 100.0% 
+On vertex: 3
+Cannot go on edge (3,8) edge prob = 50.0% r = 87.0
+Cannot go on edge (3,5) edge prob = 70.0% r = 83.0
+Going back to vertex: 0
+Going on edge (0,2) edge prob = 100.0% 
+On vertex: 2
+Going on edge (2,5) edge prob = 100.0% 
+On vertex: 5
+Going on edge (5,8) edge prob = 100.0% 
+On vertex: 8
+Cannot go on edge (8,9) edge prob = 10.0% r = 32.0
+Going on edge (8,7) edge prob = 20.0% r = 8.0
+On vertex: 7
+Cannot go on edge (7,9) edge prob = 80.0% r = 87.0
+Cannot go on edge (7,4) edge prob = 30.0% r = 77.0
+Going back to vertex: 8
+Going back to vertex: 5
+Going back to vertex: 2
+Going on edge (2,4) edge prob = 100.0% 
+On vertex: 4
+Going on edge (4,1) edge prob = 70.0% r = 40.0
+On vertex: 1
+Going on edge (1,6) edge prob = 100.0% 
+On vertex: 6
+Going on edge (6,9) edge prob = 100.0% 
+On vertex: 9
+Total DFS hops = 18
+Total DFS misses = 5
+Path = [0, 3, 0, 2, 5, 8, 7, 8, 5, 2, 4, 1, 6, 9]
