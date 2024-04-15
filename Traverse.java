@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
+import java.util.Stack;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
@@ -12,6 +13,8 @@ public class Traverse {
     Map<Integer, Integer> paths_map = new HashMap<>();
     Set<Integer> visited = new HashSet<Integer>();
     Queue<Integer> queue = new LinkedList<Integer>();
+    Stack<Integer> stack = new Stack<Integer>();
+    ArrayList<Integer> path = new ArrayList<Integer>();
     int backtrack_vertex;
     boolean cont = true;
     int hops = 0;
@@ -72,22 +75,26 @@ public class Traverse {
 
     public void dfs_traverse(){
         this.backtrack_vertex = 0;
+        
         System.out.println("DFS - probabilistic solution");
         this.dfs_traverse_recurse(0, 9);
         System.out.println("Total DFS hops = " + this.get_hops());
         System.out.println("Total DFS misses = " + this.dfs_misses);
-        System.out.println("Path = " + this.get_path() + "\n");
+        System.out.println("Path = " + this.get_path_dfs() + "\n");
     }
 
     public void dfs_traverse_recurse(int current_idx, int end){
         System.out.println("On vertex: " + current_idx);
         
         this.visited.add(current_idx);
+        this.stack.push(current_idx);
+        this.path.add(current_idx);
+        this.hops++;
         if (current_idx == end){
             this.cont = false;
+            this.hops--;
             return;
         }
-        this.hops++;
 
         ArrayList<Integer> adjacent =  this.graph.get_adjacent_vertices(current_idx);
         Collections.reverse(adjacent);
@@ -106,6 +113,7 @@ public class Traverse {
                     System.out.print("Going on edge (" + current_idx + "," + neighbor + ") edge prob = " + chance + "% " + (chance == 100 ? "\n" : "r = " + r + "\n"));
                     
                     this.paths_map.put(neighbor, current_idx);
+                    this.backtrack_vertex = current_idx;
                     this.dfs_traverse_recurse(neighbor, end);
                     if (!this.cont){
                         return;
@@ -117,6 +125,12 @@ public class Traverse {
                 }
             }
         }
+        this.stack.pop();
+        int vertex = this.stack.peek();
+        // this.visited.remove(vertex_leaving);
+        this.path.add(vertex);
+        System.out.println("Going back to vertex: " + vertex);
+        this.hops++;
     }
 
     public void print_parent_map(){
@@ -136,6 +150,16 @@ public class Traverse {
         path.add(key);
         Collections.reverse(path);
         return path;
+    }
+
+    public ArrayList<Integer> get_path_dfs(){
+        // ArrayList<Integer> path = new ArrayList<>();
+        // while(!this.stack.empty()){
+        //     path.add(this.stack.pop());
+        // }
+        // Collections.reverse(path);
+        // return path;
+        return this.path;
     }
 
     public int get_hops(){
