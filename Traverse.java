@@ -1,3 +1,18 @@
+/*
+ * Student Name: Benjamin Yanick
+ * File Name: Traverse.java
+ * Assignment Number: 2
+ * 
+ * Description:
+ *   Handles the main workload of the program.  References a Graph object to perform both BFS and DFS traversals.
+ *    For each traversal approach, a path is recorded for how the traversal approach moved throughout the graph.
+ *    The BFS approach uses a iterative approach (via a while loop) while the DFS uses a recursive approach.  There
+ *    is also a function for printing the final results of the traversal and has logic to handle the DFS and BFS 
+ *    approachs differently.  The BFS approach also uses a parent map (Java HashMap) that is used to recreate the
+ *    final path taken by the BFS approach.
+ */
+
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;

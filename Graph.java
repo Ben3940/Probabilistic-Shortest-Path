@@ -1,3 +1,16 @@
+/*
+ * Student Name: Benjamin Yanick
+ * File Name: Graph.java
+ * Assignment Number: 2
+ * 
+ * Description:
+ *   The Graph class contains data about the graph data structure, such as the adjacency_matrix, start, and end vertices.
+ *    It also handles all logic associated with getting a specific edge from the graph (get_edge()), start and end vertices,
+ *    the entire adjacency matrix, and adjacent vertices to a specified vertex.  The weights are stored in the adjacency matrix
+ *    and are the probabilities of a given edge being open during the DFS traversal approach.
+ */
+
+
 import java.util.ArrayList;
 
 public class Graph {
