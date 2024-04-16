@@ -145,7 +145,7 @@ public class Traverse {
         if(bfs_approach){
             System.out.println("BFS - deterministic solution");
             System.out.println("An optimal solution: ");
-            System.out.println(this.get_path());
+            System.out.println(this.get_path_bfs());
             System.out.println("Total hops = " + this.hops + "\n");
         
         // Pritn final results of DFS approach
@@ -157,13 +157,15 @@ public class Traverse {
         }
     }
 
+    // Print parent-path map used for BFS approach
     public void print_parent_map(){
         for (int key : this.paths_map.keySet()){
             System.out.println("Key: " + key + " Value: " + this.paths_map.get(key));
         }
     }
 
-    public ArrayList<Integer> get_path(){
+    // Construct the final path for the BFS appraoch using the paths_map
+    public ArrayList<Integer> get_path_bfs(){
         ArrayList<Integer> path = new ArrayList<>();
         int key = this.graph.get_end();
         while (key != this.graph.get_start()){
@@ -176,6 +178,7 @@ public class Traverse {
         return path;
     }
 
+    // Sets hop count manually
     public void set_hops(ArrayList<Integer> path){
         this.hops = path.size();
     }
