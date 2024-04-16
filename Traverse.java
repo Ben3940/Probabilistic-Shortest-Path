@@ -15,7 +15,6 @@ public class Traverse {
     Queue<Integer> queue = new LinkedList<Integer>();
     Stack<Integer> stack = new Stack<Integer>();
     ArrayList<Integer> path = new ArrayList<Integer>();
-    int backtrack_vertex;
     boolean cont = true;
     int hops = 0;
     int dfs_misses = 0;
@@ -31,11 +30,9 @@ public class Traverse {
 
     // Reset all shared state between BFS and DFS, so BFS and DFS can be performed back-to-back
     public void reset_state(){
-        this.paths_map = new HashMap<>();
         this.visited = new HashSet<>();
-        this.paths_map.put(graph.get_start(), -1);
         this.visited.add(this.graph.get_start());
-        this.hops = this.dfs_misses = 0;
+        this.hops = 0;
 
     }
 
@@ -74,7 +71,6 @@ public class Traverse {
 
     // Wrapper to recursive function implementing DFS approach
     public void dfs_traverse(){
-        this.backtrack_vertex = 0;
         // Begin recusion
         this.dfs_traverse_recurse(0, 9);
         this.print_results(false);
@@ -113,11 +109,7 @@ public class Traverse {
                 
                 // Success conditions to move to neighbor
                 if (chance == 100 || r <= chance){
-
                     System.out.print("Going on edge (" + current_idx + "," + neighbor + ") edge prob = " + chance + "% " + (chance == 100 ? "\n" : "r = " + r + "\n"));
-                    // Add neighbor to paths_map
-                    this.paths_map.put(neighbor, current_idx);
-                    this.backtrack_vertex = current_idx;
 
                     // Recursivly call next DFS hop
                     this.dfs_traverse_recurse(neighbor, end);
@@ -147,6 +139,7 @@ public class Traverse {
         this.hops++;
     }
 
+    // Prints either the BFS or DFS results
     public void print_results(boolean bfs_approach){
         // Print final results of BFS approach
         if(bfs_approach){
@@ -181,20 +174,6 @@ public class Traverse {
         path.add(key);
         Collections.reverse(path);
         return path;
-    }
-
-    public ArrayList<Integer> get_path_dfs(){
-        // ArrayList<Integer> path = new ArrayList<>();
-        // while(!this.stack.empty()){
-        //     path.add(this.stack.pop());
-        // }
-        // Collections.reverse(path);
-        // return path;
-        return this.path;
-    }
-
-    public int get_hops(){
-        return this.hops;
     }
 
     public void set_hops(ArrayList<Integer> path){
