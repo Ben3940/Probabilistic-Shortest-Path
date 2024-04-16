@@ -1,7 +1,7 @@
 
 public class Main{
     public static void main(String[] args){
-        Graph graph = new Graph(false);
+        Graph graph = new Graph();
 
 
         Traverse trav = new Traverse(graph);

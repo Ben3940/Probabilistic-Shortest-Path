@@ -1,18 +1,8 @@
 import java.util.ArrayList;
 
 public class Graph {
-    // int[][] adjacency_matrix = {
-    //     {0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
-    //     {1, 0, 0, 0, 1, 0, 1, 0, 0, 0},
-    //     {1, 0, 0, 0, 1, 1, 0, 0, 0, 0},
-    //     {1, 0, 0, 0, 0, 1, 0, 0, 1, 0},
-    //     {0, 1, 1, 0, 0, 0, 0, 1, 0, 0},
-    //     {0, 0, 1, 1, 0, 0, 0, 1, 1, 0},
-    //     {0, 1, 0, 0, 0, 0, 0, 0, 0, 1},
-    //     {0, 0, 0, 0, 1, 1, 0, 0, 1, 1},
-    //     {0, 0, 0, 1, 0, 1, 0, 1, 0, 1},
-    //     {0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
-    // };
+    
+    // Adjacency matrix with probability weights of edge being open
     double[][] adjacency_matrix = {
         {0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
         {1, 0, 0, 0, 0.7, 0, 1, 0, 0, 0},
@@ -25,15 +15,16 @@ public class Graph {
         {0, 0, 0, 0.5, 0, 1, 0, 0.2, 0, 0.1},
         {0, 0, 0, 0, 0, 0, 1, 0.8, 0.1, 0},
     };
-    boolean directed;
     int start, end;
 
-    public Graph(boolean directed){
-        this.directed = directed;
+    public Graph(){
+        
         this.start = 0;
         this.end = 9;
     }
 
+    
+    // Getters for start vertex, end vertex, and adjacency_matrix
     public int get_start(){
         return this.start;
     }
@@ -46,9 +37,13 @@ public class Graph {
         return this.adjacency_matrix;
     }
 
+
+
+    // Returns list of adjacent vertices for vertex_idx
     public ArrayList<Integer> get_adjacent_vertices(int vertex_idx){
         ArrayList<Integer> adjacent = new ArrayList<>();
 
+        // Loop through vertices 0-9; if weight > 0, vertex is adjacent
         for(int i =0; i <= 9; i++){
             if(this.adjacency_matrix[vertex_idx][i] > 0){
                 adjacent.add(i);
@@ -57,15 +52,9 @@ public class Graph {
         return adjacent;
     }
 
+    // Returns weight value of edge between specified vertices
     public double get_edge(int from_vertex, int to_vertex){
         return this.adjacency_matrix[from_vertex][to_vertex];
-    }
-
-    public void add_edge(int to_vertex, int from_vertex){
-        this.adjacency_matrix[to_vertex][from_vertex] = 1;
-        if (!this.directed){
-            this.adjacency_matrix[from_vertex][to_vertex] = 1;
-        }
     }
 
     // Prints adjacency matrix of Graph class
